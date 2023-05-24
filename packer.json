@@ -1,0 +1,26 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "develop-375210",
+      "source_image": "ubuntu-2204-jammy-v20230429",
+      "source_image_family": "ubuntu-2204-lts",
+      "ssh_username": "gokul",
+      "zone": "us-central1-a",
+      "image_name": "my-packer-image",
+      "image_description": "Custom image built with Packer"
+    }
+  ],
+  "provisioners": [
+
+    {
+     "type": "file",
+     "source": "/home/invis/image/script.sh",
+     "destination": "/home/gokul/script.sh"
+    },
+    {
+     "type": "shell",
+     "script": "script.sh"
+    }
+      ]
+}
