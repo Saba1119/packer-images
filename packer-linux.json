@@ -20,7 +20,10 @@
     },
     {
      "type": "shell",
-     "script": "script.sh"
+     "script": "script.sh",
+     "pause_before": "20s",
+     "max_retries": 2,
+     "timeout": "5m"
     }
-      ]
+  ] 
 }
