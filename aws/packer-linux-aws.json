@@ -1,0 +1,27 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "source_ami": "ami-053b0d53c279acc90",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "my-packer-image",
+      "ami_description": "Custom image built with Packer"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "/home/saba/packer/script.sh",
+      "destination": "/home/ubuntu/script.sh"
+    },
+    {
+      "type": "shell",
+      "script": "script.sh",
+      "pause_before": "20s",
+      "max_retries": 2,
+      "timeout": "5m"
+    }
+  ]
+}
