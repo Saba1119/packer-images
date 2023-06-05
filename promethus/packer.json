@@ -1,0 +1,25 @@
+{
+    "builders": [  
+        {
+          "type": "amazon-ebs",
+          "region": "us-east-1",
+          "ami_name": "packer-AD-LDAP",
+          "source_ami": "ami-0bef6cc322bfff646",
+          "instance_type": "t2.micro",
+          "ssh_username": "ec2-user"
+    
+        }
+      ],
+      "provisioners": [
+
+        {
+         "type": "file",
+         "source": "/home/invis/image/prom.sh",
+         "destination": "/home/ec2-user/prom.sh"
+        },
+        {
+         "type": "shell",
+         "script": "prom.sh"
+        }
+      ] 
+    }
